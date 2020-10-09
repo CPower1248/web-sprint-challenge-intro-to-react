@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import Character from "./components/Character";
+import styled from "styled-components"
 import './App.css';
+
+const StyledCards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -28,7 +35,13 @@ const App = () => {
     return (
       <div className="App">
         <h1 className="Header">Characters</h1>
-        <Character chara={chara} setChara={setChara} />
+        <StyledCards>
+          {
+          chara.map(item => {
+            return <Character key={item.id} chara={item} />
+          })
+          }
+        </StyledCards>
       </div>
     ) 
 };
